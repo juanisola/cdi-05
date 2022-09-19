@@ -1,4 +1,3 @@
-# cdi-
 #include <stdio.h>
 #include "pico/stdlib.h"
 
@@ -7,7 +6,7 @@ int main() {
       gpio_init(pin);
       gpio_set_dir(pin, true);
     }
-    uint8_t digitos[]={0x01, 0x4f, 0x12, 0x06, 0x4c, 0x24, 0x20, 0x0f, 0x00, 0x0c};
+    uint8_t digitos[]={~0x01, ~0x4f, ~0x12, ~0x06, ~0x4c, ~0x24, ~0x20, ~0x0f, ~0x00, ~0x0c};
     int contador=0;
     gpio_init(16);
     gpio_init(17);
@@ -26,10 +25,10 @@ int main() {
       if(gpio_get(18)==true){
         contador=0;
       }
-       if(gpio_get(17)==true){
+       else if(gpio_get(17)==true){
         contador--;
       }
-       if(gpio_get(16)==true){
+       else if(gpio_get(16)==true){
         contador++;
       }
       sleep_ms(500);
